@@ -24,4 +24,4 @@ urlpatterns = [
     path('profil/',include('profil.urls')),
     path('kalkulatorkesehatan/',include('KalkulatorKesehatan.urls')),
     path('kalori/', include('kalori.urls'))
-]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+]

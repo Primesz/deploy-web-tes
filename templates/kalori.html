@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{%  static  'css/stylekalori.css'  %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css">
+	
+		<script type="text/javascript">
+			function kalori(){
+				 var berat = Number(document.getElementById("berat").value);
+				 var tinggi = Number(document.getElementById("tinggi").value);
+				 var hari = Number(document.getElementById("hari").value);
+				 
+				 var tinggi2 = tinggi/100
+				 var bawah = Math.pow(tinggi2,2);
+				 var mutlak = Math.abs (berat - ((22 * bawah)/hari)*7700)
+				 var lebih = 2250 + mutlak
+				 var kurang = 2500 + ((((22 * bawah)-berat)/hari)*7700)
+				 var lebih2 = Math.round(lebih * 100) / 100;
+				 var kurang2 = Math.round(kurang * 100) / 100;
+				 
+				 var bmi = Math.round(berat / bawah);
+				 var imt = Math.round(bmi * 100) / 100;
+				 
+				 if (berat > 0 && tinggi > 0)
+					if (imt < 18.55 && lebih2 > 10000)
+						document.getElementById("comment").innerText = "Rencana penambahan berat badan anda tidak wajar, silahkan masukkan target hari yang baru";
+					else if (imt < 18.55)
+						document.getElementById("comment").innerText = "Anda disarankan mengonsumsi " + lebih2 + " kalori per hari untuk menambah berat badan";
+					else if (imt >= 18.5 && imt <= 24.9)
+						document.getElementById("comment").innerText = "Berat badan sudah ideal, disarankan mengonsumsi 2000-2500 kalori per hari untuk mempertahankan berat badan";
+					else if (kurang2 < 0)
+						document.getElementById("comment").innerText = "Rencana diet anda tidak wajar, silahkan masukkan target hari yang baru";
+					else if (imt > 24.9)
+						document.getElementById("comment").innerText = "Anda disarankan mengonsumsi " + kurang2 + " kalori per hari untuk mengurangi berat badan";
+			}		
+		</script>
+		
+		
+    <title>Profil</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top mynavbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="{% static "photos/Logo-ristex.jpg" %}" id="navbar-img" alt="" width="40" height="30" class="d-inline-block align-text-top">
+                My Blog
+            </a>
+            <button class="navbar-toggler navbar-toggler-right nav-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profil">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/kalkulatorkesehatan">Kalkulator Kesehatan</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+	
+		<center>
+			<header>REKOMENDASI ASUPAN KALORI</header>
+		
+			<form id="form" class="topBefore">
+			  <input id="tinggi" type="text" autocomplete="off" placeholder="TINGGI (CM)">
+			  <input id="berat" type="text" autocomplete="off" placeholder="BERAT (KG)">
+			  <input id="hari" type="text" autocomplete="off" placeholder="TARGET JUMLAH HARI MENUJU BERAT BADAN IDEAL">
+			  <input type="button" value="GO" onclick="kalori();">
+			</form>
+			 
+			<span id="comment"></span>
+			<a class="nav-link" href="/kalori">Ulangi</a>
+		</center>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+    </body>
+</html>

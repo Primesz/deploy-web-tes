@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+
+.mynavbar{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#navbar-img{
+    margin-right: 10px;
+    transform: scale(1.4);
+}
+
+.navbar-nav a{
+    font-family: "Open Sans";
+}
+
+body{
+    background-color: #eee;
+}
+
+.profile{
+    margin-top: 100px;
+}
+
+.profile p{
+    display: inline-block;
+}
+
+.profile .col-sm-12{
+    margin-bottom: 15vh;
+}
+
+.profile .col-sm-7{
+    padding-right: none;
+}
+
+
+.profile .card{
+    height: 80vh;
+    width: 60vw;
+    display: table-row;
+    padding: 0px;
+    box-shadow: 0px 5px 15px #bbb;
+}
+
+.profile img{
+    width: 400px;
+    height: 400px;
+    margin: 30px;
+    margin-right: 0px;
+}
+
+.description{
+    margin-top: 40px;
+    text-align: justify;
+}
+
+.description p{
+    max-width: 45ch;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    font-family: "Lora",serif;
+}
+
+.description i{
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.description h2{
+    margin-bottom: 5vh;
+}
